@@ -22,9 +22,11 @@ Right now, vagrant-lamp **only supports projects with `web` as the web-root dire
 auto-detect variant within the next couple of commits.
 
 Install vagrant-lamp as a git-submodule in your project, like so:
+
     git submodule add git://github.com/lukx/vagrant-lamp.git vagrant
 
 Your Folder Structure should now look something like this
+
     |-Project Rooot
     |   |-.gitmodules
     |   |-.git/
