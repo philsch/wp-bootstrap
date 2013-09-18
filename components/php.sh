@@ -1,7 +1,4 @@
 #!/bin/bash
-# prepare repo
-add-apt-repository ppa:ondrej/php5
-apt-get update
 
 #Php and Drivers 
 apt-get install -y php5 libapache2-mod-php5 php5-intl php-apc php5-gd php5-curl php5-mysql phpunit

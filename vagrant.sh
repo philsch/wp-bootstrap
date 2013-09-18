@@ -25,3 +25,11 @@ $VAGRANT_COMPONENTS_DIR/mariadb.sh
 echo "------------------------------------------"
 echo "Okay, your vagrant-lamp Box is all set up."
 echo "Point your browser to http://10.10.47.11/ and start rockin'!"
+
+if [ -f $VAGRANT_SYNCED_DIR/composer.json ]
+then
+	echo "P.S.: It seems like you are using composer. SSH into your box "
+	echo "and install your dependencies with these commands:"
+	echo "	vagrant ssh"
+	echo "	composer.phar install"
+fi
