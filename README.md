@@ -21,7 +21,7 @@ with a working Ubuntu-LAMP-Environment with MariaDB 5.5.
 
 Install vagrant-lamp as a git-submodule in your project, like so:
 
-    git submodule add git://github.com/lukx/vagrant-lamp.git vagrant
+    git submodule add git://github.com/Lukx/vagrant-lamp.git vagrant
 
 vagrant-lamp will try to detect the correct folder for your DocumentRoot,
 which works especially fine if you name it, relative to your project root,
