@@ -13,7 +13,8 @@ elif [ -d ${VAGRANT_SYNCED_DIR}/public ]
 	then
 	DOCROOT="/public"
 else
-	DOCROOT="/"
+	# use the project root as a fallback
+	DOCROOT=""
 fi
 
 
