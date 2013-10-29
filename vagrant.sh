@@ -9,7 +9,7 @@ sed -i "s/us\.archive\.ubuntu\.com/de\.archive\.ubuntu\.com/" /etc/apt/sources.l
 apt-get update
 
 # joe, pwgen, git and apt-tools
-apt-get install -y joe pwgen git python-software-properties
+apt-get install -y joe pwgen git
 
 # disable backup files in joe
 sed -i "s/\n -nobackups/\n-nobackups/" /etc/joe/joerc
