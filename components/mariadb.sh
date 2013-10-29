@@ -2,7 +2,14 @@
 # apt: add mariadb sources and key
 echo "deb http://mirror.netcologne.de/mariadb/repo/5.5/ubuntu precise main" >> /etc/apt/sources.list
 echo "deb-src http://mirror.netcologne.de/mariadb/repo/5.5/ubuntu precise main" >> /etc/apt/sources.list
-sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xcbcb082a1bb943db
+
+# mariadb issue: confer https://mariadb.com/kb/en/installing-mariadb-deb-files/#pinning-the-mariadb-repository
+cat /dev/null > /etc/apt/preferences.d/mariadb
+echo "Package: *" >> /etc/apt/preferences.d/mariadb
+echo "Pin: origin mirror.netcologne.de"  >> /etc/apt/preferences.d/mariadb
+echo "Pin-Priority: 1001"  >> /etc/apt/preferences.d/mariadb
+
+apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xcbcb082a1bb943db
 apt-get update
 
 # prepare for an unattended installation
@@ -14,7 +21,7 @@ MYSQL_VAGRANT_PASS=vagrant
 debconf-set-selections <<< "mariadb-server-5.5 mysql-server/root_password password $MYSQL_PASS"
 debconf-set-selections <<< "mariadb-server-5.5 mysql-server/root_password_again password $MYSQL_PASS"
 
-apt-get install -y --allow-unauthenticated mariadb-server mariadb-server-5.5 mariadb-client mariadb-client-5.5 mariadb-test libmariadbclient-dev
+apt-get install -y --allow-unauthenticated mariadb-server
 
 if [ -f $VAGRANT_SYNCED_DIR/vagrant/.mysql-passes ]
   then
