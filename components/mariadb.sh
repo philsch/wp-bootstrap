@@ -21,7 +21,7 @@ MYSQL_VAGRANT_PASS=vagrant
 debconf-set-selections <<< "mariadb-server-5.5 mysql-server/root_password password $MYSQL_PASS"
 debconf-set-selections <<< "mariadb-server-5.5 mysql-server/root_password_again password $MYSQL_PASS"
 
-apt-get install -y --allow-unauthenticated mariadb-server
+apt-get install -y --allow-unauthenticated mariadb-server mariadb-client
 
 if [ -f $VAGRANT_SYNCED_DIR/vagrant/.mysql-passes ]
   then
