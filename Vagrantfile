@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
       virtualbox.customize ["modifyvm", :id, "--memory", "2048"]
   end
   
-  config.vm.synced_folder "../", "/home/vagrant/synced/", :nfs => true
+  config.vm.synced_folder "./", "/home/vagrant/synced/", mount_options: ["dmode=777,fmode=777"]
   #config.vm.network :forwarded_port, guest: 80, host: 8080 # Forward 8080 rquest to vagrant 80 port
   config.vm.network :private_network, ip: "10.10.47.11"
 

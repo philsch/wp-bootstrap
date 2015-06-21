@@ -1,5 +1,7 @@
 export VAGRANT_SYNCED_DIR=$1
 export VAGRANT_COMPONENTS_DIR="${VAGRANTS_SYNCED_DIR}/vagrant/components"
+export VAGRANT_WEB_DIR="${VAGRANTS_SYNCED_DIR}/vagrant/web"
+export VAGRANT_RESOURCES_DIR="${VAGRANTS_SYNCED_DIR}/vagrant/resources"
 
 # Make sure the shared folder is readable
 chmod -R 755 $1
@@ -9,15 +11,13 @@ sed -i "s/us\.archive\.ubuntu\.com/de\.archive\.ubuntu\.com/" /etc/apt/sources.l
 apt-get update
 
 # joe, pwgen, git and apt-tools
-apt-get install -y joe pwgen git
-
-# disable backup files in joe
-sed -i "s/\n -nobackups/\n-nobackups/" /etc/joe/joerc
+apt-get install -y vim pwgen git
 
 $VAGRANT_COMPONENTS_DIR/apache.sh
 $VAGRANT_COMPONENTS_DIR/php.sh
 $VAGRANT_COMPONENTS_DIR/composer.sh
-$VAGRANT_COMPONENTS_DIR/mariadb.sh
+$VAGRANT_COMPONENTS_DIR/mysql.sh
+$VAGRANT_COMPONENTS_DIR/wp.sh
 
 #Reload apache configuration
 /etc/init.d/apache2 restart

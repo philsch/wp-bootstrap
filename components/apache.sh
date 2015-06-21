@@ -2,20 +2,11 @@
 
 apt-get install -y apache2
 
+# enable needed modules
+a2enmod rewrite
+
 # determine a reasonable docroot
-if [ -d ${VAGRANT_SYNCED_DIR}/web ]
-	then
-	DOCROOT="/web"
-elif [ -d ${VAGRANT_SYNCED_DIR}/htdocs ]
-	then
-	DOCROOT="/htdocs"
-elif [ -d ${VAGRANT_SYNCED_DIR}/public ]
-	then
-	DOCROOT="/public"
-else
-	# use the project root as a fallback
-	DOCROOT=""
-fi
+DOCROOT=${VAGRANT_WEB_DIR}
 
 
 # add a fqdn to ommit implicit localhost setting
